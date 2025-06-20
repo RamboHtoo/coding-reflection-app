@@ -1,0 +1,1 @@
+Python is a high-level programming language. It supports multiple programming paradigms. Functions in Python are defined using the `def` keyword. Lists are mutable sequences. Dictionaries store key-value pairs. Python uses indentation to define blocks. Comments start with the hash (#) symbol. You can install packages using pip.

@@ -1,0 +1,32 @@
+Q: What does this mean?
+   → Python is a high-level programming language
+A: Python is a high-level programming language
+
+Q: What does this mean?
+   → It supports multiple programming paradigms
+A: It supports multiple programming paradigms
+
+Q: What does this mean?
+   → Functions in Python are defined using the `def` keyword
+A: Functions in Python are defined using the `def` keyword
+
+Q: What does this mean?
+   → Lists are mutable sequences
+A: Lists are mutable sequences
+
+Q: What does this mean?
+   → Dictionaries store key-value pairs
+A: Dictionaries store key-value pairs
+
+Q: What does this mean?
+   → Python uses indentation to define blocks
+A: Python uses indentation to define blocks
+
+Q: What does this mean?
+   → Comments start with the hash (#) symbol
+A: Comments start with the hash (#) symbol
+
+Q: What does this mean?
+   → You can install packages using pip
+A: You can install packages using pip
+
