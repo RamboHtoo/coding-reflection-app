@@ -1,0 +1,64 @@
+61a01f2 Added features to add, view, and delete notes from subfolders
+diff --git a/main.py b/main.py
+index cd07c69..c1e82ee 100644
+--- a/main.py
++++ b/main.py
+@@ -1,19 +1,30 @@
+ import os
+ import subprocess
++from datetime import datetime
+ 
+ def add_note():
+     n = input("Write your note: ")
+-    filename = input("Give this note a name (no spaces): ")
+-    with open(f"notes/{filename}.txt", "w") as file:
++    auto_name = input("Do you want to auto-name the note? (y/n):")
++    if auto_name == "y":
++        timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M")
++        filename = f"note_{timestamp}"
++    else:
++        filename = input("Give this note a name (no spaces): ")
++    source = input("Where is this note from? (manual/web/pdf): ")
++    folder = f"notes/{source}"
++    os.makedirs(folder, exist_ok=True)
++    filepath = f"{folder}/{filename}.txt"
++    with open(filepath, "w") as file:
+         file.write(n)
+ 
+ def view_notes():
+-    files = os.listdir("notes")
++    source = input("Which source do you want to view? (manual/web/pdf): ")
++    files = os.listdir(f"notes/{source}/")
+     print("Your notes:")
+     for file in files:
+         print("-", file)
+     chosen = input("Enter the name of the note to read (without .txt): ")
+-    filepath = f"notes/{chosen}.txt"
++    filepath = f"notes/{source}/{chosen}.txt"
+     if os.path.exists(filepath):
+         with open(filepath, "r") as file:
+             print(file.read())
+@@ -21,12 +32,13 @@ def view_notes():
+         print("Note not found")
+ 
+ def delete_note():
+-    files = os.listdir("notes")
++    source = input("From which source do you want to delete a note? (manual/web/pdf): ")
++    files = os.listdir(f"notes/{source}/")
+     print("Your notes:")
+     for file in files:
+         print("-", file)
+     chosen = input("Enter the name of the note to delete (without .txt): ")
+-    filepath = f"notes/{chosen}.txt"
++    filepath = f"notes/{source}/{chosen}.txt"
+     if os.path.exists(filepath):
+         os.remove(filepath)
+         print("Deleted")
+diff --git a/notes/pdf/note_2025-06-20_13-11.txt b/notes/pdf/note_2025-06-20_13-11.txt
+new file mode 100644
+index 0000000..aa764cd
+--- /dev/null
++++ b/notes/pdf/note_2025-06-20_13-11.txt
+@@ -0,0 +1 @@
++hlkl
+\ No newline at end of file
